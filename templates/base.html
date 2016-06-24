@@ -1,11 +1,17 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
-</head>Welcome to Craiglist
+        <link rel="stylesheet" href='{% static "app/css/bootstrap.css" %}' media="screen" title="bootstrap" charset="utf-8">
+</head>
 <body>
-    <h3>Hello</h3>
+    <h2>Welcome to Craiglist</h2>
+    <br>
+      <div class="container">
+            <a href="{% url 'index_view' %}">Home</a>
+
 
 
 
