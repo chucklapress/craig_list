@@ -16,10 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from craigapp.views import IndexView
+from craigapp.views import IndexView,CategoryView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', IndexView.as_view(), name="index_view")
+    url(r'^$', IndexView.as_view(), name="index_view"),
+    url(r'^category/$', CategoryView.as_view(), name="category_view")
 
 ]
