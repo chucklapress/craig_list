@@ -4,7 +4,7 @@
 {% block content %}
 <h3>Landing spot for listings</h3>
 {% for object in object_list %}
-        {{ object.category }}
+        <p>{{ object.category }}</p>
         <p>{{ object.shopper }}</p>
         <p>{{ object.item_price }}</p>
 {% endfor %}
