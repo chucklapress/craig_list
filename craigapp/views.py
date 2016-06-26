@@ -1,5 +1,5 @@
-
-from django.core.urlresolvers import reverse_lazy
+from django.contrib.auth.forms import UserCreationForm
+from django.core.urlresolvers import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -38,4 +38,19 @@ def get_listing(request):
 class ListingPostView(TemplateView):
     template_name = 'listing.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["category"] = Listing.objects.all()
+        return context
 
+
+def user_create_view(request):
+    if request.POST:
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('index_view'))
+        else:
+            return render(request, "user_create_view.html", {"form": form})
+    form = UserCreationForm()
+    return render(request, "user_create_view.html", {"form": form})

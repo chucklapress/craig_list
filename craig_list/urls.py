@@ -15,16 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.contrib.auth.views import login
+from django.contrib.auth.views import logout
 
 from craigapp.forms import ListingForm
-from craigapp.views import IndexView,CategoryView, ListingPostView
+from craigapp.views import IndexView,CategoryView, ListingPostView, user_create_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',IndexView.as_view(), name="index_view"),
     url(r'^category/$', CategoryView.as_view(), name="category_view"),
-    url(r'^listing/$',ListingPostView.as_view(), name='listing_post_view')
+    url(r'^listing/$',ListingPostView.as_view(), name='listing_post_view'),
+    url(r'^user_create/$', user_create_view, name='user_create_view'),
+    url(r'^logout/$', logout, name="logout_view")
 
 
 
