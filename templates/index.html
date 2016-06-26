@@ -2,12 +2,20 @@
 
 
 {% block content %}
+
 <h3>Landing spot for listings</h3>
 {% for object in object_list %}
         <p>{{ object.category }}</p>
         <p>{{ object.shopper }}</p>
         <p>{{ object.item_price }}</p>
 {% endfor %}
+
+    <form class="listing" action="/listing/" method="post">{% csrf_token %}
+        {% for field in form %}
+            <div> </div>
+        {% endfor %}
+        <input type="submit" value="Submit Listing" />
+    </form>
 
 
 
