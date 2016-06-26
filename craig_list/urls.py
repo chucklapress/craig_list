@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.contrib.auth.views import login
 
 from craigapp.forms import ListingForm
-from craigapp.views import IndexView,CategoryView
+from craigapp.views import IndexView,CategoryView, ListingPostView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',IndexView.as_view(), name="index_view"),
     url(r'^category/$', CategoryView.as_view(), name="category_view"),
+    url(r'^listing/$',ListingPostView.as_view(), name='listing_post_view')
 
 
 
