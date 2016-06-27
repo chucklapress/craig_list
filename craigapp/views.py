@@ -54,3 +54,4 @@ def user_create_view(request):
             return render(request, "user_create_view.html", {"form": form})
     form = UserCreationForm()
     return render(request, "user_create_view.html", {"form": form})
+
