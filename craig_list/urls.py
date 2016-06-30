@@ -27,5 +27,5 @@ urlpatterns = [
     url(r'^category/$', CategoryView.as_view(), name="category_view"),
     url(r'^listing/$',ListingPostView.as_view(), name='listing_post_view'),
     url(r'^user_create/$', user_create_view, name='user_create_view'),
-    url(r'^logout/$', logout, name="logout_view"),
+    url(r'^logout/$', logout, name="logout_view")
 ]

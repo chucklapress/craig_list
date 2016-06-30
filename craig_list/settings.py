@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'craigapp',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'craigapiapp'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -122,3 +125,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_URL = '/'
 SUCCESS_URL = '/'
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}

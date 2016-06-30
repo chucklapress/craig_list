@@ -25,6 +25,8 @@ class CategoryView(ListView):
 
 
 
+
+
 def get_listing(request):
     if request.method == 'POST':
         form = ListingForm(request.POST)
@@ -54,4 +56,3 @@ def user_create_view(request):
             return render(request, "user_create_view.html", {"form": form})
     form = UserCreationForm()
     return render(request, "user_create_view.html", {"form": form})
-
