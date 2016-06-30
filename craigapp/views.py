@@ -23,10 +23,6 @@ class CategoryView(ListView):
     def get_queryset(self):
         return Category.objects.all()
 
-
-
-
-
 def get_listing(request):
     if request.method == 'POST':
         form = ListingForm(request.POST)
@@ -44,7 +40,6 @@ class ListingPostView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["category"] = Listing.objects.all()
         return context
-
 
 def user_create_view(request):
     if request.POST:

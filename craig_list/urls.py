@@ -16,16 +16,24 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth.views import logout
+from rest_framework.authtoken import views
 
 
 from craigapp.forms import ListingForm
 from craigapp.views import IndexView,CategoryView, ListingPostView, user_create_view
+from craigapiapp.views import ListingListAPIView, ListingDetailAPIView
+
+
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^api-token-auth/', views.obtain_auth_token),
     url(r'^$',IndexView.as_view(), name="index_view"),
     url(r'^category/$', CategoryView.as_view(), name="category_view"),
     url(r'^listing/$',ListingPostView.as_view(), name='listing_post_view'),
     url(r'^user_create/$', user_create_view, name='user_create_view'),
-    url(r'^logout/$', logout, name="logout_view")
+    url(r'^logout/$', logout, name="logout_view"),
+    url(r'^api/listings/$', ListingListAPIView.as_view(), name="listing_list_api_view"),
+    url(r'^api/listings/(?P<pk>\d+)/$', ListingDetailAPIView.as_view(), name="listing_detail_api_view")
 ]
