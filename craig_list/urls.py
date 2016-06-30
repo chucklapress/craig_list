@@ -21,7 +21,7 @@ from rest_framework.authtoken import views
 
 from craigapp.forms import ListingForm
 from craigapp.views import IndexView,CategoryView, ListingPostView, user_create_view
-from craigapiapp.views import ListingListAPIView, ListingDetailAPIView, CategoryListAPIView, CategoryDetailAPIView
+from craigapiapp.views import ListingListAPIView, ListingDetailAPIView, CategoryListAPIView, CategoryDetailAPIView, SubCategoryListAPIView, SubCategoryDetailAPIView, RegionListAPIView, RegionDetailAPIView
 
 
 
@@ -37,6 +37,10 @@ urlpatterns = [
     url(r'^api/listings/$', ListingListAPIView.as_view(), name="listing_list_api_view"),
     url(r'^api/listings/(?P<pk>\d+)/$', ListingDetailAPIView.as_view(), name="listing_detail_api_view"),
     url(r'^api/categorys/$', CategoryListAPIView.as_view(), name="category_list_api_view"),
-    url(r'^api/categorys/(?P<pk>\d+)/$', CategoryDetailAPIView.as_view(), name="category_detail_api_view")
+    url(r'^api/categorys/(?P<pk>\d+)/$', CategoryDetailAPIView.as_view(), name="category_detail_api_view"),
+    url(r'^api/subcategorys/$', SubCategoryListAPIView.as_view(), name="sub_category_list_api_view"),
+    url(r'^api/subcategorys/(?P<pk>\d+)/$', SubCategoryDetailAPIView.as_view(), name="sub_category_detail_api_view"),
+    url(r'^api/regions/$', RegionListAPIView.as_view(), name="region_list_api_view"),
+    url(r'^api/regions/(?P<pk>\d+)/$', RegionDetailAPIView.as_view(), name="region_detail_api_view")
 
 ]

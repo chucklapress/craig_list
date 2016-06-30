@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework import generics
-from craigapiapp.serializers import ListingSerializer, CategorySerializer
+from craigapiapp.serializers import ListingSerializer, CategorySerializer, SubCategorySerializer, RegionSerializer
 
-from craigapp.models import Listing, Category
+from craigapp.models import Listing, Category, SubCategory, Region
 
 # Create your views here.
 class ListingListAPIView(generics.ListCreateAPIView):
@@ -25,3 +25,23 @@ class CategoryListAPIView(generics.ListCreateAPIView):
 class CategoryDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+class SubCategoryListAPIView(generics.ListCreateAPIView):
+    queryset = SubCategory.objects.all()
+    serializer_class = SubCategorySerializer
+    def get_queryset(self):
+        return SubCategory.objects.all()
+
+class SubCategoryDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = SubCategory.objects.all()
+    serializer_class = SubCategorySerializer
+
+class RegionListAPIView(generics.ListCreateAPIView):
+    queryset = Region.objects.all()
+    serializer_class = RegionSerializer
+    def get_queryset(self):
+        return Region.objects.all()
+
+class RegionDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Region.objects.all()
+    serializer_class = RegionSerializer
