@@ -7,7 +7,7 @@ from craigapp.models import Listing, Category, SubCategory, Region
 # Create your views here.
 class ListingListAPIView(generics.ListCreateAPIView):
     queryset = Listing.objects.all()
-    serializer_class = ListingSerializer, CategorySerializer
+    serializer_class = ListingSerializer
 
     def get_queryset(self):
         return Listing.objects.all()
