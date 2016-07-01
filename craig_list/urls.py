@@ -19,8 +19,7 @@ from django.contrib.auth.views import logout
 from rest_framework.authtoken import views
 
 
-from craigapp.forms import ListingForm
-from craigapp.views import IndexView,CategoryView, ListingDetailView , ListingPostView, SubCategoryListView, user_create_view
+from craigapp.views import IndexView,CategoryView, ListingDetailView ,SubCategoryListView, user_create_view, ListingCreateView
 from craigapiapp.views import ListingListAPIView, ListingDetailAPIView, CategoryListAPIView, CategoryDetailAPIView, SubCategoryListAPIView, SubCategoryDetailAPIView, RegionListAPIView, RegionDetailAPIView
 
 
@@ -33,7 +32,7 @@ urlpatterns = [
     url(r'^category/$', CategoryView.as_view(), name="category_view"),
     url(r'^subcategory/$', SubCategoryListView.as_view(), name="subcategory_list_view"),
     url(r'^listing/(?P<pk>\d+)/$', ListingDetailView.as_view(), name='listing_detail_view'),
-    url(r'^listing/$',ListingPostView.as_view(), name='listing_post_view'),
+    url(r'^listing_create/$',ListingCreateView.as_view(), name='listing_create_view'),
     url(r'^user_create/$', user_create_view, name='user_create_view'),
     url(r'^logout/$', logout, name="logout_view"),
     url(r'^api/listings/$', ListingListAPIView.as_view(), name="listing_list_api_view"),

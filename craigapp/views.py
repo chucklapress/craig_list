@@ -4,8 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
-from django.views.generic import ListView, TemplateView, DetailView
-from .forms import ListingForm
+from django.views.generic import ListView, TemplateView, DetailView, CreateView
 from craigapp.models import Listing, Category, SubCategory
 
 
@@ -23,27 +22,12 @@ class CategoryView(ListView):
     def get_queryset(self):
         return Category.objects.all()
 
-def get_listing(request):
-    if request.method == 'POST':
-        form = ListingForm(request.POST)
-        if form.is_valid():
-            return HttpResponseRedirect('/listing posted/')
-    else:
-        form = ListingForm()
-
-    return render(request, 'listing.html', {'form': form})
 
 class ListingDetailView(DetailView):
     model = Listing
 
 
-class ListingPostView(TemplateView):
-    template_name = 'listing.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["category"] = Listing.objects.all()
-        return context
 
 def user_create_view(request):
     if request.POST:
@@ -60,3 +44,8 @@ class SubCategoryListView(ListView):
     def get_queryset(self, **kwargs):
         category_id = self.kwargs.get('pk',None)
         return Category.objects.filter(subcategory__id=category_id)
+
+class ListingCreateView(CreateView):
+    model = Listing
+    fields = ['category','shopper','item_price']
+    success_url = '/'
