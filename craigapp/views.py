@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
-from django.views.generic import ListView, TemplateView
+from django.views.generic import ListView, TemplateView, DetailView
 from .forms import ListingForm
 from craigapp.models import Listing, Category, SubCategory
 
@@ -32,6 +32,10 @@ def get_listing(request):
         form = ListingForm()
 
     return render(request, 'listing.html', {'form': form})
+
+class ListingDetailView(DetailView):
+    model = Listing
+
 
 class ListingPostView(TemplateView):
     template_name = 'listing.html'
