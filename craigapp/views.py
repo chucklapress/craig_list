@@ -6,7 +6,7 @@ from django.shortcuts import render
 # Create your views here.
 from django.views.generic import ListView, TemplateView
 from .forms import ListingForm
-from craigapp.models import Listing, Category
+from craigapp.models import Listing, Category, SubCategory
 
 
 class IndexView(ListView):
@@ -27,7 +27,7 @@ def get_listing(request):
     if request.method == 'POST':
         form = ListingForm(request.POST)
         if form.is_valid():
-            return HttpResponseRedirect('/thanks/')
+            return HttpResponseRedirect('/listing posted/')
     else:
         form = ListingForm()
 
@@ -51,3 +51,8 @@ def user_create_view(request):
             return render(request, "user_create_view.html", {"form": form})
     form = UserCreationForm()
     return render(request, "user_create_view.html", {"form": form})
+
+class SubCategoryListView(ListView):
+    def get_queryset(self, **kwargs):
+        category_id = self.kwargs.get('pk',None)
+        return Category.objects.filter(subcategory__id=category_id)

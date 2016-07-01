@@ -20,7 +20,7 @@ from rest_framework.authtoken import views
 
 
 from craigapp.forms import ListingForm
-from craigapp.views import IndexView,CategoryView, ListingPostView, user_create_view
+from craigapp.views import IndexView,CategoryView, ListingPostView, SubCategoryListView, user_create_view
 from craigapiapp.views import ListingListAPIView, ListingDetailAPIView, CategoryListAPIView, CategoryDetailAPIView, SubCategoryListAPIView, SubCategoryDetailAPIView, RegionListAPIView, RegionDetailAPIView
 
 
@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^api-token-auth/', views.obtain_auth_token),
     url(r'^$',IndexView.as_view(), name="index_view"),
     url(r'^category/$', CategoryView.as_view(), name="category_view"),
+    url(r'^subcategory/$', SubCategoryListView.as_view(), name="subcategory_list_view"),
     url(r'^listing/$',ListingPostView.as_view(), name='listing_post_view'),
     url(r'^user_create/$', user_create_view, name='user_create_view'),
     url(r'^logout/$', logout, name="logout_view"),
