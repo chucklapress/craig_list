@@ -22,11 +22,12 @@ class CategoryView(ListView):
     def get_queryset(self):
         return Category.objects.all()
 
+class CategoryDetailView(DetailView):
+    model = Category
+
 
 class ListingDetailView(DetailView):
     model = Listing
-
-
 
 
 def user_create_view(request):
