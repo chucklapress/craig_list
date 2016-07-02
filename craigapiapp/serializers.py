@@ -21,9 +21,11 @@ class SubCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = SubCategory
         fields = ['id','name','category']
+        depth = 1
 
 class RegionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Region
         fields = ['id','location','location_name']
+        depth = 1
