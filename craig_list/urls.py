@@ -17,6 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth.views import logout
 from rest_framework.authtoken import views
+from django.conf.urls import include
 
 
 
@@ -44,6 +45,8 @@ urlpatterns = [
     url(r'^api/subcategorys/$', SubCategoryListAPIView.as_view(), name="sub_category_list_api_view"),
     url(r'^api/subcategorys/(?P<pk>\d+)/$', SubCategoryDetailAPIView.as_view(), name="sub_category_detail_api_view"),
     url(r'^api/regions/$', RegionListAPIView.as_view(), name="region_list_api_view"),
-    url(r'^api/regions/(?P<pk>\d+)/$', RegionDetailAPIView.as_view(), name="region_detail_api_view")
+    url(r'^api/regions/(?P<pk>\d+)/$', RegionDetailAPIView.as_view(), name="region_detail_api_view"),
+    url(r'^api-auth/', include('rest_framework.urls',namespace='rest_framework'))
+                              
 
 ]

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework import generics
+from rest_framework import permissions
 from craigapiapp.serializers import ListingSerializer, CategorySerializer, SubCategorySerializer, RegionSerializer
 
 from craigapp.models import Listing, Category, SubCategory, Region
