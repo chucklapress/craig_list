@@ -47,6 +47,6 @@ urlpatterns = [
     url(r'^api/regions/$', RegionListAPIView.as_view(), name="region_list_api_view"),
     url(r'^api/regions/(?P<pk>\d+)/$', RegionDetailAPIView.as_view(), name="region_detail_api_view"),
     url(r'^api-auth/', include('rest_framework.urls',namespace='rest_framework'))
-                              
+
 
 ]
