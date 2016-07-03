@@ -19,6 +19,7 @@ from django.contrib.auth.views import logout
 from rest_framework.authtoken import views
 
 
+
 from craigapp.views import IndexView,ListingDetailView , CategoryView, CategoryDetailView, SubCategoryListView, user_create_view, ListingCreateView
 from craigapiapp.views import ListingListAPIView, ListingDetailAPIView, CategoryListAPIView, CategoryDetailAPIView, SubCategoryListAPIView, SubCategoryDetailAPIView, RegionListAPIView, RegionDetailAPIView
 
