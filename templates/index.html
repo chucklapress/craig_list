@@ -3,12 +3,12 @@
 
 {% block content %}
 
-<h3>Landing spot for listings</h3>
+<h3>Complete listings</h3>
 {% for object in object_list %}
         <p>{{ object.category }}</p>
         <p>{{ object.shopper }}</p>
         <p>{{ object.item_price }}</p>
 {% endfor %}
 
-    
+
 {% endblock %}
