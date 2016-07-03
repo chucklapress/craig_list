@@ -1,4 +1,7 @@
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
 
 
 # Create your models here.
@@ -38,6 +41,9 @@ class Region(models.Model):
     def __str__(self):
         return self.location
 
-
-
-
+@receiver(post_save, sender="auth.User")
+def create_token(**kwargs):
+    created = kwargs.get('created')
+    instance = kwargs.get('instance')
+    if created:
+        Token.objects.create(user=instance)
