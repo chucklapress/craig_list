@@ -25,12 +25,9 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
 
 
 
-
 class ListingListAPIView(generics.ListCreateAPIView):
     queryset = Listing.objects.all()
     serializer_class = ListingSerializer
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
 
     def get_queryset(self):
         return Listing.objects.all()
@@ -44,8 +41,7 @@ class ListingDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 class CategoryListAPIView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+
     def get_queryset(self):
         return Category.objects.all()
 
@@ -58,8 +54,7 @@ class CategoryDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 class SubCategoryListAPIView(generics.ListCreateAPIView):
     queryset = SubCategory.objects.all()
     serializer_class = SubCategorySerializer
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+
     def get_queryset(self):
         return SubCategory.objects.all()
 
@@ -72,8 +67,7 @@ class SubCategoryDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
 class RegionListAPIView(generics.ListCreateAPIView):
     queryset = Region.objects.all()
     serializer_class = RegionSerializer
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+
     def get_queryset(self):
         return Region.objects.all()
 
