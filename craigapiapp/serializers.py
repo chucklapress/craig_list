@@ -47,7 +47,7 @@ class SubCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = SubCategory
         fields = ['id','name','category','user']
-        depth = 1
+        
         def validate_user(self, value):
 
             if value and len(value) > 0:
@@ -68,7 +68,7 @@ class RegionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Region
         fields = ['id','location','location_name','user']
-        depth = 1
+
         def validate_user(self, value):
 
             if value and len(value) > 0:
