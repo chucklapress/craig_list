@@ -10,20 +10,24 @@
     <br>
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
+            {% if user.is_authenticated %}
             <a href="{% url 'index_view' %}">Home</a>
             <a href="{% url 'category_view' %}">Categories</a>
-            <a href="{% url 'user_create_view'%}">Create Craiglist user</a>
             <a href="{%url 'listing_create_view'%}">Create listing item</a>
-            <a href="{%url 'login'%}">Login to your account</a>
             <a href="{%url 'logout_view'%}?next=/">Logout</a>
+            {% else %}
+            <a href="{% url 'index_view' %}">Home</a>
+            <a href="{% url 'user_create_view'%}">Create user</a>
+            <a href="{%url 'login'%}">User login</a>
+            {% endif %}
 
      </div>
    </nav>
    <br>
    <div class="container">
      <h2>Welcome to Craiglist</h2>
-
-
+     <h5>Create a user account to be able to post your items</h5>
+     <br>
       {% block content %}
           no content
       {% endblock %}
