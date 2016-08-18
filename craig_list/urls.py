@@ -22,7 +22,7 @@ from django.conf.urls import include
 
 
 
-from craigapp.views import IndexView,ListingDetailView , CategoryView, CategoryDetailView, SubCategoryListView, user_create_view, ListingCreateView, LoginView, LogoutView
+from craigapp.views import IndexView,ListingDetailView , CategoryView, CategoryDetailView, SubCategoryListView, user_create_view, ListingCreateView, LoginView, LogoutView, SubCategoryDetailView
 from craigapiapp.views import ListingListAPIView, ListingDetailAPIView, CategoryListAPIView, CategoryDetailAPIView, SubCategoryListAPIView, SubCategoryDetailAPIView, RegionListAPIView, RegionDetailAPIView
 
 
@@ -38,6 +38,7 @@ urlpatterns = [
     url(r'^category/$', CategoryView.as_view(), name="category_view"),
     url(r'^category/(?P<pk>\d+)/$', CategoryDetailView.as_view(), name='category_detail_view'),
     url(r'^subcategory/$', SubCategoryListView.as_view(), name="subcategory_list_view"),
+    url(r'^subcategory/(?P<pk>\d+)/$', SubCategoryDetailView.as_view(), name='subcategory_detail_view'),
     url(r'^listing/(?P<pk>\d+)/$', ListingDetailView.as_view(), name='listing_detail_view'),
     url(r'^listing_create/$',ListingCreateView.as_view(), name='listing_create_view'),
     url(r'^user_create/$', user_create_view, name='user_create_view'),

@@ -7,9 +7,10 @@
 <p>Item category: {{ object.name }}</p>
 <p>Listings location: {{ object.item_location }}</p>
 <p>Listing posting date: {{ object.post_date }}</p>
+<a href="{% url 'subcategory_detail_view' object.id %}">Listing details</a>
 <br>
 <p>********************</p>
-  
-{% endfor %}
 
+{% endfor %}
+hello
 {%endblock%}

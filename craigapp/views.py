@@ -49,6 +49,9 @@ class SubCategoryListView(ListView):
         category_id = self.kwargs.get('pk',None)
         return Category.objects.filter(subcategory__id=category_id)
 
+class SubCategoryDetailView(DetailView):
+    model = SubCategory
+
 class ListingCreateView(CreateView):
     model = Listing
     fields = ['category','shopper','item_price']
