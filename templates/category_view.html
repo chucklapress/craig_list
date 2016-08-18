@@ -4,10 +4,15 @@
 <h4>Category Listings:</h4>
 
 {% for object in object_list %}
+<p>********************</p>
+<br>
+<p>Item category: {{ object.name }}</p>
+<p>Listings location: {{ object.item_location }}</p>
+<p>Listing posting date: {{ object.post_date }}</p>
+<br>
+<p>********************</p>
 
-        <p>{{ object.name }}</p>
-        <p>{{ object.item_location }}</p>
-        <p>{{ object.post_date }}</p>
+
 {% endfor %}
 
 

@@ -2,9 +2,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 
 # Create your views here.
-from django.views.generic import ListView, TemplateView, DetailView, CreateView
+from django.views.generic import ListView, TemplateView, DetailView, CreateView, View
 from craigapp.models import Listing, Category, SubCategory
 
 
@@ -50,3 +53,26 @@ class ListingCreateView(CreateView):
     model = Listing
     fields = ['category','shopper','item_price']
     success_url = '/'
+
+class LoginView(View):
+    def post(self, request):
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+
+                return HttpResponseRedirect('/form')
+            else:
+                return HttpResponse("Inactive user.")
+        else:
+            return HttpResponseRedirect(settings.LOGIN_URL)
+
+        return render(request, "index.html")
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return HttpResponseRedirect(settings.LOGIN_URL)

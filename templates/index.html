@@ -5,9 +5,15 @@
 
 <h3>Complete listings</h3>
 {% for object in object_list %}
-        <p>{{ object.category }}</p>
-        <p>{{ object.shopper }}</p>
-        <p>{{ object.item_price }}</p>
+<p>********************</p>
+<br>
+<p>Listing Category: {{ object.category }}</p>
+<p>Listing Poster: {{ object.shopper }}</p>
+<p>Item Price ${{ object.item_price }}</p>
+<br>
+<p>********************</p>
+
+
 {% endfor %}
 
 {% endblock %}

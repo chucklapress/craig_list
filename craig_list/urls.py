@@ -13,15 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
-from django.contrib.auth.views import logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import login, logout
 from rest_framework.authtoken import views
 from django.conf.urls import include
 
 
 
-from craigapp.views import IndexView,ListingDetailView , CategoryView, CategoryDetailView, SubCategoryListView, user_create_view, ListingCreateView
+from craigapp.views import IndexView,ListingDetailView , CategoryView, CategoryDetailView, SubCategoryListView, user_create_view, ListingCreateView, LoginView, LogoutView
 from craigapiapp.views import ListingListAPIView, ListingDetailAPIView, CategoryListAPIView, CategoryDetailAPIView, SubCategoryListAPIView, SubCategoryDetailAPIView, RegionListAPIView, RegionDetailAPIView
 
 
@@ -29,7 +30,10 @@ from craigapiapp.views import ListingListAPIView, ListingDetailAPIView, Category
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url('^', include('django.contrib.auth.urls')),
     url(r'^api-token-auth/', views.obtain_auth_token),
+    url(r'^login/$', login, name="login_view"),
+    url(r'^logout/$', logout, name="logout_view"),
     url(r'^$',IndexView.as_view(), name="index_view"),
     url(r'^category/$', CategoryView.as_view(), name="category_view"),
     url(r'^category/(?P<pk>\d+)/$', CategoryDetailView.as_view(), name='category_detail_view'),
@@ -37,7 +41,6 @@ urlpatterns = [
     url(r'^listing/(?P<pk>\d+)/$', ListingDetailView.as_view(), name='listing_detail_view'),
     url(r'^listing_create/$',ListingCreateView.as_view(), name='listing_create_view'),
     url(r'^user_create/$', user_create_view, name='user_create_view'),
-    url(r'^logout/$', logout, name="logout_view"),
     url(r'^api/listings/$', ListingListAPIView.as_view(), name="listing_list_api_view"),
     url(r'^api/listings/(?P<pk>\d+)/$', ListingDetailAPIView.as_view(), name="listing_detail_api_view"),
     url(r'^api/categorys/$', CategoryListAPIView.as_view(), name="category_list_api_view"),
