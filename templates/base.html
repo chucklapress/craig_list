@@ -11,14 +11,14 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
             {% if user.is_authenticated %}
-            <a href="{% url 'index_view' %}">Home</a>
-            <a href="{% url 'category_view' %}">Categories</a>
-            <a href="{%url 'listing_create_view'%}">Create listing item</a>
-            <a href="{%url 'logout_view'%}?next=/">Logout</a>
+            <a href="{% url 'index_view' %}">*Home*</a>
+            <a href="{% url 'category_view' %}">*Categories*</a>
+            <a href="{%url 'listing_create_view'%}">*Create listing item*</a>
+            <a href="{%url 'logout_view'%}?next=/">*Logout*</a>
             {% else %}
-            <a href="{% url 'index_view' %}">Home</a>
-            <a href="{% url 'user_create_view'%}">Create user</a>
-            <a href="{%url 'login'%}">User login</a>
+            <a href="{% url 'index_view' %}">*Home*</a>
+            <a href="{% url 'user_create_view'%}">*Create user*</a>
+            <a href="{%url 'login'%}">*User login*</a>
             {% endif %}
 
      </div>
