@@ -10,6 +10,7 @@
 <p>Listing Category: {{ object.category }}</p>
 <p>Listing Poster: {{ object.shopper }}</p>
 <p>Item Price ${{ object.item_price }}</p>
+<a href="{% url 'listing_detail_view' object.id %}">Listing details</a>
 <br>
 <p>********************</p>
 
