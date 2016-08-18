@@ -1,14 +1,11 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<h3>The item you were interested in</h3>
-
-
-    <p>Listing category: {{ object.category }}</p>
-    <p>Posted by user: {{ object.shopper }}</p>
-    <p>Listing price: ${{ object.item_price }}</p>
-
-
-
-
+<div class="container">
+  <h3>The item you were interested in</h3>
+  <br>
+<p>Listing category: {{ object.category }}</p>
+<p>Posted by user: {{ object.shopper }}</p>
+<p>Listing price: ${{ object.item_price }}</p>
+</div>
 {% endblock %}

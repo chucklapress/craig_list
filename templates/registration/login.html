@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container">
-<h3>Sign in</h3>
+<h3>Please Sign in</h3>
 <br>
   <form class="" action="" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Log In">
   </form>
+  <h5>Thanks for being a loyal Craiglist user</h5>
 </div>
 
 {% endblock %}

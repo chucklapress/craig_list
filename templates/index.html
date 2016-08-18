@@ -2,13 +2,17 @@
 
 
 {% block content %}
+<div class="container">
+  <h2>Welcome to Craiglist</h2>
+  <h5>Create a user account to be able to post your items</h5>
+  <br>
 
 <h4>All our current listings</h4>
 {% for object in object_list %}
 <p>********************</p>
 <br>
 <p>Listing Category: {{ object.category }}</p>
-<p>Listing Poster: {{ object.shopper }}</p>
+<p>Craiglist seller: {{ object.shopper }}</p>
 <p>Item Price ${{ object.item_price }}</p>
 <a href="{% url 'listing_detail_view' object.id %}">Listing details</a>
 <br>
@@ -16,5 +20,5 @@
 
 
 {% endfor %}
-
+</div>
 {% endblock %}

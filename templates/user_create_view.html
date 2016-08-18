@@ -1,14 +1,15 @@
 {% extends "base.html" %}
+{% block content %}
+<br>
 
-
-    {% block content %}
-
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-        <input type="submit" value="submit">
-        </form>
-
-
-    {% endblock %}
-
+<div class="container">
+  <h4>You are on your way to selling your items for that needed cash</h4>
+  <h5>Fill out and submit the form, and welcome to Craiglist</h5>
+  <br>
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="submit">
+  </form>
+</div>
+{% endblock %}

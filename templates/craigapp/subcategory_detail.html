@@ -1,13 +1,12 @@
 {% extends "base.html" %}
+
 {% block content %}
-<h3>The item you were interested in</h3>
-
-
+<div class="container">
+<h4>The item you were interested in</h4>
+<br>
 <p>item name: {{ object.name }}</p>
 <p>item Category:{{ object.Category }}</p>
 <p>Item ID:{{ object.id }}</p>
-
-
-
+</div>
 
 {% endblock %}
