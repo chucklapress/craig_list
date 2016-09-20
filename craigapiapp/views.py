@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from rest_framework import generics
 from rest_framework import permissions
+from rest_framework.authentication import TokenAuthentication
+
+
 
 from craigapiapp.serializers import ListingSerializer, CategorySerializer, SubCategorySerializer, RegionSerializer
 
@@ -8,6 +11,8 @@ from craigapiapp.serializers import ListingSerializer, CategorySerializer, SubCa
 from craigapp.models import Listing, Category, SubCategory, Region
 
 # Create your views here.
+
+
 class IsOwnerOrReadOnly(permissions.BasePermission):
     """
     Custom permission to only allow owners of an object to edit it.
@@ -28,12 +33,13 @@ class ListingListAPIView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         return Listing.objects.all()
-
+    
 class ListingDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Listing.objects.all()
     serializer_class = ListingSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,
                       IsOwnerOrReadOnly,)
+
 
 class CategoryListAPIView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
